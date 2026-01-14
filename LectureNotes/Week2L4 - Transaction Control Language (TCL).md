@@ -16,7 +16,7 @@
 
 - Permanently saves changes made during the current transaction.
 
-- **Syntax:**
+- **Syntax:** COMMIT TRANSACTION; -- Or simply: COMMIT;
 
 - **Usage:** Once data is committed, it cannot be undone. Use after a group of successful DML statements to make changes permanent.
 
@@ -25,7 +25,7 @@
 ### 2. ROLLBACK
 
 - Undoes changes made in the current transaction that have not yet been committed.
-- **Syntax:**
+- **Syntax:** ROLLBACK TRANSACTION; -- Or simply: ROLLBACK;
 
 - **Usage:** Use when an error occurs or you want to discard all changes made during the transaction since the last COMMIT.
 
@@ -35,7 +35,7 @@
 
 - Creates a named point within a transaction to which you can later rollback.
 
-- **Syntax:**
+- **Syntax:** SAVE TRANSACTION SavepointName; -- To return to this point: ROLLBACK TRANSACTION SavepointName;
 
 - **Usage:** Allows you to rollback only part of a transaction, not the entire set of changes.
 
