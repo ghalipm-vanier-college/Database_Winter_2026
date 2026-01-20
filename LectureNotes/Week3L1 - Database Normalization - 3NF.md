@@ -44,20 +44,80 @@
 | 101    | Jane Doe| Java   |
 
 ---
-
 ### Second Normal Form (2NF)
-- Must be in 1NF
-- `No partial dependency` (no non-key attribute depends on part of a `composite primary key`)
-- Only applies to tables with **composite keys**
 
-**Partial Dependency Example:**  
-If a table has (ProjectID, EmpNum) as the key, but ProjectName depends only on ProjectID:  
-- ProjectName must move to its own table.
+**Definition**
+A table is in **Second Normal Form (2NF)** if:
 
-**2NF Conversion Example:**
-- **PROJECT**: ProjectID, ProjectName
-- **EMPLOYEE**: EmpNum, EmpName, JobClass, ChargeHour
-- **ASSIGNMENT**: ProjectID, EmpNum, HoursBilled
+1. It is already in **First Normal Form (1NF)**, and  
+2. **No partial dependency exists** — every non-key attribute must depend on the **entire primary key**, not just part of it.
+
+> 2NF only matters when a table has a **composite (multi-column) primary key**.
+
+---
+
+### What is a Partial Dependency?
+
+A **partial dependency** happens when:
+
+- The primary key has more than one column, and  
+- A non-key column depends on only **one part** of that key.
+
+This causes **data duplication and update problems**.
+
+---
+
+### Example (Before 2NF)
+
+Suppose we store project assignments like this:
+
+| ProjectID | ProjectName | EmpNum | EmpName | JobClass | ChargeHour | HoursBilled |
+|-----------|---------------|----------|-----------|--------------|---------------|----------------|
+
+**Primary Key:** (ProjectID, EmpNum)
+
+Problems:
+
+- `ProjectName` depends only on `ProjectID`
+- `EmpName`, `JobClass`, `ChargeHour` depend only on `EmpNum`
+
+These are **partial dependencies**, so the table is **not in 2NF**.
+
+---
+
+### Conversion to 2NF (After Decomposition)
+
+We split the table into three tables:
+
+#### PROJECT
+| ProjectID (PK) | ProjectName |
+
+Stores data that depends only on ProjectID.
+
+---
+
+#### EMPLOYEE
+| EmpNum (PK) | EmpName | JobClass | ChargeHour |
+
+Stores data that depends only on EmpNum.
+
+---
+
+#### ASSIGNMENT
+| ProjectID (PK, FK) | EmpNum (PK, FK) | HoursBilled |
+
+Stores data that depends on the **full composite key** (ProjectID + EmpNum).
+
+---
+
+### Result
+
+Now:
+
+- All non-key attributes depend on the **whole key**
+- No duplication of project or employee data
+- The schema is in **Second Normal Form (2NF)** 
+
 
 ---
 
