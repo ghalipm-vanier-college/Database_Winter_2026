@@ -167,6 +167,30 @@ EXEC sp_helpindex 'Customers';
 ```
 you should see  'idx_customer_city' under 'index_name' column . 
 
+**Creating a Table with a Default Clustered Index (Primary Key)**
+* When you define a 'primary key', SQL Server automatically creates a 'clustered index on that column'. The rows are then physically ordered according to the 'EmployeeID'.
+
+  **Explicitly Creating a Clustered Index on an Existing Table**
+If a table does not have a primary key, you can explicitly create a clustered index using the CREATE CLUSTERED INDEX statement. A table can only have one clustered index. 
+```sql
+CREATE TABLE dbo.EmployeeDetails (
+    EmployeeID INT NOT NULL,
+    PassportNumber VARCHAR(50) NULL,
+    ExpiryDate DATE NULL
+);
+```
+* Create a clustered index on the EmployeeID column:
+```sql
+CREATE CLUSTERED INDEX CIX_EmpDetails_Composite
+ON dbo.EmployeeDetails (EmployeeID ASC, PassportNumber DESC);
+```
+**Composite Clustered Index**
+You can also create a clustered index on multiple columns (a composite index). 
+```sql
+CREATE CLUSTERED INDEX CIX_EmpDetails_Composite
+ON dbo.EmployeeDetails (EmployeeID ASC, PassportNumber DESC);
+```
+
 ### 🔹 ALTER INDEX (Rebuild or Rename)
 
 **Purpose:** Rebuilds or reorganizes the index when a table undergoes many updates or deletes.
