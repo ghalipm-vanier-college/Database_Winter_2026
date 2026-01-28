@@ -325,7 +325,7 @@ END CATCH;
 
 ## Practice Questions
 
-1. Write a **stored procedure** to increase all product prices by 10% in each system.
+1. Write a **stored procedure** to increase all product prices by 12% in each system. [Use Decimal (18,2) for 2 digit precision after the comma]
 2. Create a **function** that returns total sales by `CustomerID`.
 3. Create a **trigger** to log every deleted product into a history table.
 4. Modify your function to handle NULL values safely.
