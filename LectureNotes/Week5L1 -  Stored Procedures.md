@@ -52,17 +52,17 @@ GO
 ## 3️⃣ Example 1: Simple Stored Procedure
 
 ### Task:
-Reduce product discounts by 5% for items whose quantity on hand is at least **twice the minimum**.
+Increase product discounts by 5% for items whose quantity on hand is at least **twice the minimum**.
 
 ```sql
 CREATE PROCEDURE PRC_Prod_Discount
 AS
 BEGIN
    UPDATE Product
-   SET P_DISCOUNT = P_DISCOUNT -0.05   -- Reduce discount by 5%
+   SET P_DISCOUNT = P_DISCOUNT + 0.05   -- Reduce discount by 5%
    WHERE P_QOH >= (P_MIN * 2);
 
-   PRINT '✅ Product discounts reduced by 5% successfully.';
+   PRINT 'Product discounts reduced by 5% successfully.';
 END;
 GO
 
@@ -94,8 +94,8 @@ END
 GO
 
 SELECT * FROM Product;
--- Execute with 5% discount reduction
-EXEC Price_After_Discount 0.07;
+-- Execute with 15% discount reduction
+EXEC Price_After_Discount 0.15;
 SELECT * FROM Product;
 GO
 DROP PROCEDURE Price_After_Discount;
