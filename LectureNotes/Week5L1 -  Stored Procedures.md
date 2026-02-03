@@ -323,7 +323,7 @@ EXEC PRC_Inv_Delete 1009;
 
 ---
 
-## 1️. Vendor Table
+## Product - Vendor Tables
 
 ```sql
 CREATE TABLE Vendor (
