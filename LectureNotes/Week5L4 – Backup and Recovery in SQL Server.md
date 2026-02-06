@@ -175,6 +175,7 @@ WITH NAME = 'Transaction Log Backup';
 6. Click **OK** to restore
 
 ---
+## If backup or recovery does not work, restart your SQL Studio. Also your back up place should be in default SQL Server folder.   
 
 ## 🔟 Recovery Timeline and Point-in-Time Restore
 
